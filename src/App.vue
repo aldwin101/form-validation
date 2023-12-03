@@ -1,47 +1,47 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <section class="h-screen flex justify-center items-center">
+    <div class="rounded fixed top-0 py-4 w-1/3">
+      <div class="flex justify-center w-full mt-16">
+        <button
+          class="py-3 px-4 transition w-full rounded-tl-lg rounded-tr-lg"
+          @click.prevent="tab = 'login'"
+          :class="{
+            'hover:text-black text-black bg-white': tab === 'login',
+            'hover:text-blue-500 border-l border-t border-r border-gray-300': tab === 'register'
+          }"
+        >
+          Login
+        </button>
+        <button
+          class="py-3 px-4 transition w-full rounded-tl-lg rounded-tr-lg"
+          @click.prevent="tab = 'register'"
+          :class="{
+            'hover:text-black text-black bg-white': tab === 'register',
+            'hover:text-blue-500 border-l border-t border-r border-gray-300': tab === 'login'
+          }"
+        >
+          Register
+        </button>
+      </div>
+      <login-form v-if="tab === 'login'" />
+      <register-form v-else />
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </section>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
+import LoginForm from './components/LoginForm.vue'
+import RegisterForm from './components/RegisterForm.vue'
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+export default {
+  components: {
+    LoginForm,
+    RegisterForm
+  },
+  data() {
+    return {
+      tab: 'login'
+    }
   }
 }
-</style>
+</script>
