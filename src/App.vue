@@ -6,8 +6,9 @@
           class="py-3 px-4 transition w-full rounded-tl-lg rounded-tr-lg"
           @click.prevent="tab = 'login'"
           :class="{
-            'hover:text-black text-black bg-white': tab === 'login',
-            'hover:text-blue-500 border-l border-t border-r border-gray-300': tab === 'register'
+            'hover:text-black text-gray-800 bg-white': tab === 'login',
+            'hover:text-blue-500 text-gray-400 border-l-2 border-t-2 border-r-2 border-gray-300':
+              tab === 'register'
           }"
         >
           Login
@@ -16,8 +17,9 @@
           class="py-3 px-4 transition w-full rounded-tl-lg rounded-tr-lg"
           @click.prevent="tab = 'register'"
           :class="{
-            'hover:text-black text-black bg-white': tab === 'register',
-            'hover:text-blue-500 border-l border-t border-r border-gray-300': tab === 'login'
+            'hover:text-black text-gray-800 bg-white': tab === 'register',
+            'hover:text-blue-500 text-gray-400 border-l-2 border-t-2 border-r-2 border-gray-300':
+              tab === 'login'
           }"
         >
           Register
